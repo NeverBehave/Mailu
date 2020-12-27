@@ -20,8 +20,8 @@ $config['plugins'] = array(
     'carddav'
 );
 
-$front = getenv('FRONT_ADDRESS') ? getenv('FRONT_ADDRESS') : 'front';
-$imap  = getenv('IMAP_ADDRESS')  ? getenv('IMAP_ADDRESS')  : 'imap';
+$front = getenv('FRONT_HOST') ? getenv('FRONT_HOST') : 'front';
+$imap  = getenv('IMAP_HOST')  ? getenv('IMAP_HOST')  : 'imap';
 
 // Mail servers
 $config['default_host'] = $front;

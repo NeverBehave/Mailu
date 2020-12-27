@@ -32,7 +32,6 @@ else:
     exit(1)
 
 
-
 conf.jinja("/php.ini", os.environ, "/usr/local/etc/php/conf.d/roundcube.ini")
 
 # Create dirs, setup permissions

@@ -2,7 +2,7 @@ from mailu import models
 from flask import current_app as app
 
 import re
-import urllib
+import urllib.parse
 import ipaddress
 import socket
 import tenacity
@@ -85,7 +85,8 @@ def get_status(protocol, status):
     return status, codes[protocol]
 
 def extract_host_port(host_and_port, default_port):
-    host, _, port = re.match('^(.*?)(:([0-9]*))?$', host_and_port).groups()
+    result = urllib.parse.urlsplit('//{}'.format(host_and_port))
+    host, port = result.hostname, result.port
     return host, int(port) if port else default_port
 
 def get_server(protocol, authenticated=False):

@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
   && echo "ServerSignature Off" >> /etc/apache2/apache2.conf
 
 # Shared layer between nginx, dovecot, postfix, postgresql, rspamd, unbound, rainloop, roundcube
-RUN pip3 install socrate
+RUN pip3 install git+git://github.com/NeverBehave/socrate.git
 
 ENV ROUNDCUBE_URL https://github.com/roundcube/roundcubemail/releases/download/1.4.6/roundcubemail-1.4.6-complete.tar.gz
 
