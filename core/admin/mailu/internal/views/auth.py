@@ -14,6 +14,7 @@ def nginx_authentication():
     """
     limiter = utils.limiter.get_limiter(app.config["AUTH_RATELIMIT"], "auth-ip")
     client_ip = flask.request.headers["Client-Ip"]
+    print(flask.request.headers)
     if not limiter.test(client_ip):
         response = flask.Response()
         response.headers['Auth-Status'] = 'Authentication rate limit from one source exceeded'
@@ -30,6 +31,8 @@ def nginx_authentication():
         subnet = ipaddress.ip_network(app.config["SUBNET"])
         if limit_subnet or ipaddress.ip_address(client_ip) not in subnet:
             limiter.hit(flask.request.headers["Client-Ip"])
+
+            
     return response
 
 

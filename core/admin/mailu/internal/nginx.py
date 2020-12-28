@@ -96,7 +96,8 @@ def get_server(protocol, authenticated=False):
         hostname, port = extract_host_port(app.config['POP3_ADDRESS'], 110)
     elif protocol == "smtp":
         if authenticated:
-            hostname, port = extract_host_port(app.config['AUTHSMTP_ADDRESS'], 10025)
+            # We make them the same because both cases, nginx does its job
+            hostname, port = extract_host_port(app.config['SMTP_ADDRESS'], 10025)
         else:
             hostname, port = extract_host_port(app.config['SMTP_ADDRESS'], 25)
     try:
